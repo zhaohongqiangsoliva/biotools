@@ -47,7 +47,7 @@ if [  -n "${p}" ] ;then
     then
         echo "${p} project already exists"
     else    
-        mkdir -pv ${p} ${p}/{bin,data,Scripy,note,process/log}
+        mkdir -pv ${p} ${p}/{bin,data,Script,note,process/log}
 
         touch ${p}/process/{main.sh,main.py}
     fi
