@@ -1,0 +1,1 @@
+/Users/soliva/Desktop/1_project/Scripts/biotools/add_path.sh

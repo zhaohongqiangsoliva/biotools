@@ -1,5 +1,5 @@
 #!/bin/bash
-usage() { echo "Usage: $0 [-s <string>] [-p <string>] \n create template for python -s new a script -p is new a project  " 1>&2; exit 1; }
+usage() { echo -e "Usage: $0 [-s <string>] [-p <string>] \ncreate template for python -s new a script -p is new a project  " 1>&2; exit 1; }
 
 while getopts ":s:p:" o; do
     case "${o}" in
@@ -26,12 +26,11 @@ if [ -n "${s}" ] ;then
 else 
  echo '
     tempplate for detial
-    @Author: zhaohongqiangsoliva@gmail.com
-
+    @Author:zhaohq 
+    @Email:zhaohongqiangsoliva@gmail.com
     Usage:
         ${s}.py [--mindp int]
         VCFDPFilter.py -h | --help | -e | --example |
-
     Notes:
         notes detial 
     Options:
