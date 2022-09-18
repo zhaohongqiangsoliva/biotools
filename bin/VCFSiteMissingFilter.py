@@ -1,1 +1,1 @@
-/Users/soliva/Desktop/1_project/Scripts/biotools/VCF_filter/VCFSiteMissingFilter.py
+../VCF_filter/VCFSiteMissingFilter.py

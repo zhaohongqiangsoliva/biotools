@@ -1,1 +1,1 @@
-/Users/soliva/Desktop/1_project/Scripts/biotools/newpy.sh
+../newpy.sh
