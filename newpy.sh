@@ -49,4 +49,4 @@ shift $((OPTIND-1))
 
 if [ -z "${s}" ] && [ -z "${p}" ]; then
     usage
-else
+fi
