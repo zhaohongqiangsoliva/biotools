@@ -1,7 +1,7 @@
 #!/bin/bash
-usage() { echo -e "Usage: $0 [-s <string>] [-p <string>] \ncreate template for python -s new a script -p is new a project  " 1>&2; exit 1; }
+usage() { echo -e "Usage: $0 [-s <string>] [-p <string>] [-x <string>] \ncreate template for python -s new a script -p is new a project  " 1>&2; exit 1; }
 
-while getopts ":s:p:" o; do
+while getopts ":xs:p:" o; do
     case "${o}" in
         s)
                 s=${OPTARG}
@@ -9,18 +9,18 @@ while getopts ":s:p:" o; do
                 echo ${s} '文件已经存在，不能重复创建'
                 else 
                 echo '
-                    tempplate for detial
-                    @Author:zhaohq 
-                    @Email:zhaohongqiangsoliva@gmail.com
-                    Usage:
-                        ${s}.py [--mindp int]
-                        VCFDPFilter.py -h | --help | -e | --example |
-                    Notes:
-                        notes detial 
-                    Options:
-                        -参数 --参数     Explanation
-                    import sys
-                    from docopt import docopt
+tempplate for detial
+@Author:zhaohq 
+@Email:zhaohongqiangsoliva@gmail.com
+Usage:
+    ${s}.py [--mindp int]
+    VCFDPFilter.py -h | --help | -e | --example |
+Notes:
+    notes detial 
+Options:
+    -参数 --参数     Explanation
+import sys
+from docopt import docopt
                 ' >> ${s}.py
                 echo $1 '文件创建成功'
                 fi
@@ -36,9 +36,12 @@ while getopts ":s:p:" o; do
                 touch ${p}/process/{main.sh,main.py}
             fi
             ;;
-        x)
-            cat Extarc/extarc.sh >> ~/.bashrc
+        x)  
+            SCRIPT_DIR=$(cd $(dirname $(readlink -f ${BASH_SOURCE[0]})); pwd)
             
+            cat ${SCRIPT_DIR}/Extract//extract.sh >> ~/.bashrc
+            cat ${SCRIPT_DIR}/Extract//extract.sh >> ~/.zshrc
+            echo "adding extarc to bash and zsh ${shell}"
             ;;
         *)
             usage
@@ -47,6 +50,6 @@ while getopts ":s:p:" o; do
 done
 shift $((OPTIND-1))
 
-if [ -z "${s}" ] && [ -z "${p}" ]; then
+if [ -z "${s}" ] && [ -z "${p}" ] && [ -z "${x}" ]; then
     usage
 fi
