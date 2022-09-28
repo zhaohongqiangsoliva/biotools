@@ -37,6 +37,8 @@ UP
 crawley
 Crawls web pages and prints any link it can find.
 
+Coreutils Viewer（cv）是一个简单的程序，它可以用于显示任何核心组件命令（如：cp、mv、dd、tar、gzip、gunzip、cat、grep、fgrep、egrep、cut、sort、xz、exiting）的进度。它使用文件描述信息来确定一个命令的进度
+apt install progress
 
 ## python
 aiofiles：对 asyncio 的文件支持
