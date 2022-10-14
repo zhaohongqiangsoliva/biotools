@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="wuzh02.hpccube.com" id="192c2878-0918-4309-b12a-2b1d55497f47" port="65091" nameFormat="DESCRIPTIVE" username="zhaohq" />
+    </configs>
+  </component>
+</project>

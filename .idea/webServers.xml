@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c5cb28a4-cec3-4495-8b14-75fadd4a5e9e" name="wuzh02.hpccube.com">
+        <fileTransfer rootFolder="/work/home/zhaohq/zhaohq" accessType="SFTP" host="wuzh02.hpccube.com" port="65091" sshConfigId="192c2878-0918-4309-b12a-2b1d55497f47" sshConfig="zhaohq@wuzh02.hpccube.com:65091 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
