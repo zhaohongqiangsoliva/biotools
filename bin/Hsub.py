@@ -47,7 +47,7 @@ line2
 ------------------------
 qsub -cwd -j y -l h_rt=10:0:0 -l h_vmem=5g -pe smp 3 -binding linear:3 -N test_1 -b y 'line1'
 qsub -cwd -j y -l h_rt=10:0:0 -l h_vmem=5g -pe smp 3 -binding linear:3 -N test_2 -b y 'line2'
-    ''');
+    ''')
 
 
 def self_Node_Compute() -> list:
@@ -59,7 +59,7 @@ def self_Node_Compute() -> list:
     input_option = sp.getoutput(cmd).split(" ")
     mem, cpu_load, cpu_A, cpu_I, cpu_T = input_option[4], input_option[5], input_option[6].split("/")[0], \
                                          input_option[6].split("/")[1], input_option[6].split("/")[3]
-    return (mem, cpu_load, cpu_A, cpu_I, cpu_T)
+    return ([mem, cpu_load, cpu_A, cpu_I, cpu_T])
 
 
 def autoOption(input_file: str, ) -> str:
@@ -73,8 +73,9 @@ def autoOption(input_file: str, ) -> str:
     mem, cpu_load, cpu_A, cpu_I, cpu_T = self_Node_Compute()
     for _l in input_file:
         pass
+    return("ceshi")
 
-def seff_Estimated(job_id):
+def seff_Estimated(job_id:str) :
     import subprocess as sp
     import re
     cmd = f"""seff {job_id} """
@@ -85,7 +86,7 @@ def seff_Estimated(job_id):
         if "Cores per node" in i :
             cpu = i.split(":")[-1]
         if "CPU Efficiency" in i :
-            cpu_eff = re.findall(":.*%",i)
+            cpu_eff = re.findall(":.*%",i)[0]
             if cpu_eff>70:
                 cpu = cpu
             else:
@@ -94,14 +95,14 @@ def seff_Estimated(job_id):
         if "Memory Utilized" in i :
             mem = i.split(":")[-1]
         if "Memory Efficiency" in i:
-            mem_eff = re.findall(":.*%", i)
+            mem_eff = re.findall(":.*%", i)[0]
             if mem_eff>70:
                 mem = mem
             else:
                 #10 = 10 -3
                 mem += mem  - int(mem /3)
 
-    return (mem, cpu )
+    return (input_option,mem, cpu )
 
 
 
@@ -111,7 +112,7 @@ def seff_Estimated(job_id):
 
 if __name__ == '__main__':
     self_Node_Compute()
-
+    pritn(seff_Estimated())
 #     args = docopt(__doc__, version='1.2')
 #     #print(args)
 
