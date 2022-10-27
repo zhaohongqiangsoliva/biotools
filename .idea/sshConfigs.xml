@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="wuzh02.hpccube.com" id="192c2878-0918-4309-b12a-2b1d55497f47" port="65091" nameFormat="DESCRIPTIVE" username="zhaohq" />
+      <sshConfig host="wuzh02.hpccube.com" id="192c2878-0918-4309-b12a-2b1d55497f47" keyPath="$USER_HOME$/.ssh/wuzh02.hpccube.com_1012215149_rsa.txt" port="65101" nameFormat="DESCRIPTIVE" username="zhaohq" />
     </configs>
   </component>
 </project>
