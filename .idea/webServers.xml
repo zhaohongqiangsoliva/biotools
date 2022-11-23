@@ -16,6 +16,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="f807e82b-c6ef-4513-a0bf-8ad39b7cb990" name="gpu03">
+        <fileTransfer rootFolder="/home/zhaohq/work_space/" accessType="SFTP" host="192.168.118.85" port="22" sshConfigId="a4189fd2-8a77-4633-828c-589707af53cf" sshConfig="zhaohq@192.168.118.85:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
