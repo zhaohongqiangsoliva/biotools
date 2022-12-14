@@ -1,0 +1,18 @@
+{
+  "global" : {
+    "options": "/work/share/ac7m4df1o5/bin/cromwell/6_json/0.option/options.json"
+
+  },
+   "bedtointerval":{
+       "bed": "127.0.0.1",
+       "fa_dict": "root"
+   },
+  "fastq2ubam" : {
+      "wdl": "/work/share/ac7m4df1o5/bin/cromwell/1_pipeline/fastq2ubam/seq-format-conversion-master/paired-fastq-to-unmapped-bam.wdl"
+  },
+  "WES_pipe" :{
+    "wdl": "/work/share/ac7m4df1o5/bin/cromwell/1_pipeline/Exome_Germline_Single_Sample/ExomeGermlineSingleSample_v3.1.5/ExomeGermlineSingleSample_v3.1.5.wdl",
+    "zip": "/work/share/ac7m4df1o5/bin/cromwell/1_pipeline/Exome_Germline_Single_Sample/ExomeGermlineSingleSample_v3.1.5/ExomeGermlineSingleSample_v3.1.5.zip",
+    "wes_input_json" : "/work/share/ac7m4df1o5/bin/cromwell/6_json/1.germline/hg38/temp_hg38_input.json"
+  }
+}
