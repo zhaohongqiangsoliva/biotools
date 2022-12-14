@@ -13,10 +13,18 @@ from signal import signal, SIGPIPE, SIG_DFL
 signal(SIGPIPE, SIG_DFL)
 
 
+
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Hsub parser')
     parser.add_argument('input', help='input file 可以使用管道,也可以使用使用 Hsub input_file' ,nargs='?')
+    args = parser.parse_args()
 
+    if args.input is not  None:
+        pass
+    else:
+        pass
 
 
 
