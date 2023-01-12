@@ -22,9 +22,9 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.input is not  None:
-        pass
+        input_file = args.input
     else:
-        pass
+        input_file  = '/dev/stdin'
 
 
 
