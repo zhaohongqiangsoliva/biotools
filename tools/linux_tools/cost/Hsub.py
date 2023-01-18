@@ -140,10 +140,13 @@ if __name__ == '__main__':
         with open("comlist.sh","w") as f1:
             for _line in open(input_file).readlines():
                 _lines = _line.strip()
-                out = "$srun " + _lines +"\n"
-                sys.stdout.write(out)
+                out = "srun -N1 -n1 " + _lines +"&\n"
+                #sys.stdout.write(out)
                 f1.write(out)
+
+        sys.stdout.write("< comlist.sh")
         sys.stdout.write("date\n")
+        f.write("< comlist.sh\n")
         f.write("date\n")
 
         f.write("wait")
