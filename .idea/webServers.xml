@@ -23,6 +23,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="06b5dfe8-00de-4277-ba59-8835328b8a9f" name="mycomputer">
+        <fileTransfer rootFolder="/data" accessType="SFTP" host="39.107.228.251" port="2288" sshConfigId="bffabea1-2094-4189-a6ca-4d7214e00138" sshConfig="soliva@39.107.228.251:2288 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

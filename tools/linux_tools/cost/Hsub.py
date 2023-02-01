@@ -43,6 +43,7 @@ def autoOption(time,
         # SBATCH --cpus-per-task={cpu}
         header = f'''\
 #!/bin/bash
+#SBATCH --time={time}
 #SBATCH --job-name={job_name}
 #SBATCH -p {partition}
 #SBATCH -N 1
@@ -63,7 +64,7 @@ parallel="parallel --delay .2 -j {runs} --joblog logs/runtask.log --resume"
 
 
 
-def seff_Estimated(job_id:str) :
+def seff_Estimated(job_id:str,p:str) :
     '''
     par:job id
     fun:
@@ -97,7 +98,9 @@ def seff_Estimated(job_id:str) :
                 #10 = 10 -3
                 mem += mem  - int(int(mem) / 3)
 
-
+    mem_old, cpu_load, cpu_A, cpu_I, cpu_T = self_Node_Compute(p)
+    print("推荐参数：",int(mem), int(cpu))
+    print("目前节点状态：mem_old, cpu_load, cpu_A, cpu_I, cpu_T \n",mem_old, cpu_load, cpu_A, cpu_I, cpu_T )
     return (int(mem), int(cpu))
 
 
@@ -108,12 +111,12 @@ def seff_Estimated(job_id:str) :
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Hsub parser')
-    parser.add_argument('input', help='input file 可以使用管道,也可以使用使用 Hsub input_file' ,nargs='?')
+    parser.add_argument('input', help='input file 可以使用管道cat file |Hsub <options>,也可以使用使用 Hsub input_file <options>' ,nargs='?')
     parser.add_argument('-c',"--CPU", help='CPU cpus-per-task=1  指定每个进程使用核数，不指定默认为8 ',default=8)
     parser.add_argument('-m', "--MEM",help='MEM',default=16000)
     parser.add_argument('-t', "--TIME",help='time',default=30000)
     parser.add_argument('-p', "--partition",help='节点 默认使用独占节点',default="wzhcexclu06")
-    parser.add_argument('-n',"--ntask", help="指定总进程数；不使用cpus，可理解为进程数即为核数 (主要使用这个参数) 需计算jobs X runs 如 jobs X runs =2X8 ntask=16 ",default=8*1)
+    parser.add_argument('-n',"--ntask", help="指定总进程数；不使用cpus，可理解为进程数即为核数 (主要使用这个参数) 需计算jobs X runs 如 'jobs x runs = 2 X 8' ntask=16 ",default=8*1)
     parser.add_argument("-j","--jobs",help="任务所需核数，默认为1",default=1)
     parser.add_argument("-r","--runs",help="运行同时并行几个任务，在jobs为1时等于ntask",default=8)
     parser.add_argument("-name","--name",help="任务名称",default="Hsub_submit")
@@ -140,7 +143,7 @@ if __name__ == '__main__':
         with open("comlist.sh","w") as f1:
             for _line in open(input_file).readlines():
                 _lines = _line.strip()
-                out = "srun -N1 -n1 " + _lines +"&\n"
+                out = _lines +"\n"
                 #sys.stdout.write(out)
                 f1.write(out)
 
