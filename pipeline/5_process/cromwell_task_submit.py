@@ -8,6 +8,7 @@ import subprocess as sb
 import json,csv
 signal(SIGPIPE, SIG_DFL)
 from pathlib import Path
+import time
 
 '''
 sample csv：
@@ -20,7 +21,7 @@ patient,sample,lane,fastq1,fastq2,fastq3    i1 fq_r1 fq_r2
 script_dir = os.path.split(os.path.realpath(__file__))[0]
 
 ### reading  server config
-with open(script_dir+'/config.json') as j:
+with open(script_dir+'/config_debug.json') as j:
     config_j = json.load(j)
     bedtointerval = config_j['bedtointerval']
     global_options = config_j["global"]
@@ -68,7 +69,7 @@ class pipeline(object):
     #     cmd = "".join(self.shell_bed2inter_sh,bed ,fa_dict,output)
     #     return self.pipe + cmd
 
-    def mkdirofRsult(self,sample_name,option_name,p) -> str:
+    def mkdirofRsult(self,sample_name,option_name,p) :
         '''
         建立结果文件夹以及 copy options.json 创建options.json的文件
         '''
@@ -76,10 +77,11 @@ class pipeline(object):
         cmd = f"""
 mkdir -vp {self.outputs}/{sample_name}/cromwell/{option_name}/{{outputs,wf_logs,call_logs}}
 cp {self.options} {sample_path}/option_{option_name}.json 
-sed -i "s#/Users/michael_scott/cromwell/#{self.outputs}/{sample_name}/cromwell/{option_name}/#g" {sample_path}/option_{option_name}.json 
-        """
-        cmd_partition= f"""\n sed -i "s#partitions#{p}#g" """
+sed -i "s#/Users/michael_scott/cromwell/#{self.outputs}/{sample_name}/cromwell/{option_name}/#g" {sample_path}/option_{option_name}.json
+"""
+        cmd_partition= f"""\n sed -i "s#partitions#{p}#g" {sample_path}/option_{option_name}.json"""
         cmd = cmd + cmd_partition
+        print(cmd)
         return cmd
 
     def readgroup(self,fastq1,fastq2,lane,sample_name,sample_path):
@@ -210,7 +212,7 @@ EOF
             patient = samplelist["patient"]
             lane = samplelist["lane"]
             sample_name = samplelist["sample"]
-            ubamdir = os.path.join(self.outputs,sample_name,"cromwell/outputs")
+            ubamdir = os.path.join(self.outputs,sample_name,"cromwell/fq2ubam/outputs")
             ubamlist = glob.glob(f"{ubamdir}/*unmapped.bam")
             input_json_dict = json.load(open(WES_pipe["wes_input_json"]))
             input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["sample_name"] = sample_name
@@ -359,6 +361,7 @@ if __name__ == '__main__':
             for cmd in cmds:
                 # print(cmd)
                 running(cmd)
+                time.sleep(30)
 
 
 sys.stdout.flush()

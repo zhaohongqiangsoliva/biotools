@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="mycomputer" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="mycomputer" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" showNewOnSourceInSync="false">
+    <option name="confirmBeforeUploading" value="false" />
     <serverData>
+      <paths name="cromwell">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/5_process" local="$PROJECT_DIR$/pipeline/5_process" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/5_process" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="gpu03">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="mycomputer">
         <serverdata>
           <mappings>
@@ -9,7 +27,14 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="wuzh02.hpccube.com">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
-    <option name="myAutoUpload" value="ALWAYS" />
+    <option name="myAutoUpload" value="ON_EXPLICIT_SAVE" />
   </component>
 </project>
