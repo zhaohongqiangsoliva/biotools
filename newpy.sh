@@ -41,8 +41,8 @@ from docopt import docopt
             echo ${SCRIPT_DIR}
             cat ${SCRIPT_DIR}/Extract//extract.sh >> ~/.bashrc
             #cat ${SCRIPT_DIR}/Extract//extract.sh >> ~/.zshrc
-            echo "PATH=${SCRIPT_DIR}/bin:$PATH" >> ~/.zshrc
-            echo "PATH=${SCRIPT_DIR}/bin:$PATH" >> ~/.bashrc
+            echo 'PATH=${SCRIPT_DIR}/bin:$PATH' >> ~/.zshrc
+            echo 'PATH=${SCRIPT_DIR}/bin:$PATH' >> ~/.bashrc
             echo "adding extarc to bash and zsh ${shell}"
             ;;
         *)
