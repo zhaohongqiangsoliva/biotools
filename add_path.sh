@@ -8,7 +8,7 @@ case $input in
     [yY][eE][sS]|[yY])
         echo -e "export PATH=\"\$PATH:${SHELL_FOLDER_bin}\"" >>~/.bashrc
         echo -e "export PATH=\"\$PATH:${SHELL_FOLDER_bin}\"" >>~/.zshrc
-        
+        chmod -x bin/new
         ;;
  
     [nN][oO]|[nN])
