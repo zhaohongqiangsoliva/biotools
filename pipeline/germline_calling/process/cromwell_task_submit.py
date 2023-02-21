@@ -20,14 +20,6 @@ patient,sample,lane,fastq1,fastq2,fastq3    i1 fq_r1 fq_r2
 
 script_dir = os.path.split(os.path.realpath(__file__))[0]
 
-### reading  server config
-with open(script_dir+'/config_debug.json') as j:
-    config_j = json.load(j)
-    bedtointerval = config_j['bedtointerval']
-    global_options = config_j["global"]
-    fastq2ubam = config_j["fastq2ubam"]
-    WES_pipe = config_j["WES_pipe"]
-    single_pipe = config_j["single_pipe"]
 
 ## script belong to directory
 
@@ -45,7 +37,7 @@ def running(commands):
     running subprocess popen fun to running Command line
     '''
 
-    process = sb.Popen(commands, stdin=sb.PIPE, stdout=sb.PIPE,shell=True)
+    process = sb.Popen(commands, stdin=sb.PIPE, stdout=sb.PIPE,shell=True,executable='/bin/bash')
     out, err = process.communicate()
 
 
@@ -329,13 +321,22 @@ if __name__ == '__main__':
     parser.add_argument("-b", "--bed", help="input : bed interval_list")
     parser.add_argument("-d", "--dryrun",action='store_true', help="try to running ")
     parser.add_argument("-partition","--partition",help="输入运行节点or 队列名称，默认 ",default="wzhcexclu06")
+    parser.add_argument("-c", "--config", help="config file path",default="config.json")
     args = parser.parse_args()
 
     if args.input is not  None:
         sample_csv = args.input
     else:
         sample_csv  = '/dev/stdin'
+    ### reading  server config
 
+    with open(script_dir + args.config) as j:
+        config_j = json.load(j)
+        bedtointerval = config_j['bedtointerval']
+        global_options = config_j["global"]
+        fastq2ubam = config_j["fastq2ubam"]
+        WES_pipe = config_j["WES_pipe"]
+        single_pipe = config_j["single_pipe"]
 
     pipe = pipeline(args.output,args.partition)
     if "fastp" in args.pipe:

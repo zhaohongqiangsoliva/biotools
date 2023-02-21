@@ -1,8 +1,20 @@
-module add apps/GATK/4.1.2.0
+export PATH=/work/share/ac7m4df1o5/zhaohq/bio/bin:$PATH
 # SNP 过滤
 fasta=$1
 output_name=$2
 site_vcf=$3
+
+gatk SelectVariants \
+     -R ${fasta} \
+     -V 2.${output_name}.vcf \
+     --select-type-to-include SNP \
+     -O 3.${output_name}.raw_snps.vcf
+# select Indel
+gatk SelectVariants \
+     -R ${fasta} \
+     -V 2.${output_name}.vcf \
+     --select-type-to-include INDEL \
+     -O 3.${output_name}.raw_indels.vcf
 
 gatk VariantFiltration \
    -R ${fasta} \
@@ -56,3 +68,7 @@ gatk VariantFiltration  \
   -V 8.${output_name}.GQfilter.genotype_filter.SUPsite.snps.indels.genotype.vcf \
   -O 9.${output_name}.pass.HFILTER.vcf \
   -select "vc.isNotFiltered()"
+
+###bcftools norm with del multiallelics
+bcftools norm -m-both -o 10.${output_name}.multiallelics.pass.HFILTER.vcf 9.${output_name}.pass.HFILTER.vcf
+bcftools norm -f ${fasta} -o 11.${output_name}.left.multiallelics.pass.HFILTER.vcf 10.${output_name}.multiallelics.pass.HFILTER.vcf

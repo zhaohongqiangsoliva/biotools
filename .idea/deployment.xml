@@ -23,7 +23,7 @@
       <paths name="mycomputer">
         <serverdata>
           <mappings>
-            <mapping deploy="/pipeline/cromwell/cromwell/5_process" local="$USER_HOME$/Library/CloudStorage/OneDrive-个人/1.cloud/biotools/pipeline/5_process" web="/" />
+            <mapping deploy="" local="$USER_HOME$/Library/CloudStorage/OneDrive-个人/1.cloud/biotools/pipeline/5_process" web="/" />
           </mappings>
         </serverdata>
       </paths>
