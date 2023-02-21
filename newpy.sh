@@ -31,7 +31,7 @@ from docopt import docopt
             then
                 echo "${p} project already exists"
             else    
-                mkdir -pv ${p} ${p}/{bin,data,Script,note,process/log}
+                mkdir -pv ${p} ${p}/{bin,0.data,1.running,note,result,process/log}
 
                 touch ${p}/process/{main.sh,main.py}
             fi
@@ -40,7 +40,7 @@ from docopt import docopt
             SCRIPT_DIR=$(cd $(dirname $(readlink -f ${BASH_SOURCE[0]})); pwd)
             
             cat ${SCRIPT_DIR}/Extract//extract.sh >> ~/.bashrc
-            cat ${SCRIPT_DIR}/Extract//extract.sh >> ~/.zshrc
+            #cat ${SCRIPT_DIR}/Extract//extract.sh >> ~/.zshrc
             echo "adding extarc to bash and zsh ${shell}"
             ;;
         *)
