@@ -30,6 +30,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="57e41e42-2ba2-4de1-a9c6-54756a34c714" name="mycomputer_disk">
+        <fileTransfer rootFolder="/disk" accessType="SFTP" host="39.107.228.251" port="2288" sshConfigId="bffabea1-2094-4189-a6ca-4d7214e00138" sshConfig="soliva@39.107.228.251:2288 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

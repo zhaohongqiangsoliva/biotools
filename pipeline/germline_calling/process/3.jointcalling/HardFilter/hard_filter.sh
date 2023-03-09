@@ -1,8 +1,9 @@
-export PATH=/work/share/ac7m4df1o5/zhaohq/bio/bin:$PATH
+#export PATH=/work/share/ac7m4df1o5/zhaohq/bio/bin:$PATH
 # SNP 过滤
 fasta=$1
 output_name=$2
 site_vcf=$3
+
 
 gatk SelectVariants \
      -R ${fasta} \
@@ -57,7 +58,7 @@ gatk VariantFiltration  \
  --genotype-filter-expression "GQ < 20" --genotype-filter-name "GQ20" \
  -O 7.${output_name}.genotype_filter.SUPsite.snps.indels.genotype.vcf
 
-/work/share/ac7m4df1o5/zhaohq/software/conda_env/bin/bcftools filter -s GQ20 -e "FORMAT/FT[*]!=''" 7.${output_name}.genotype_filter.SUPsite.snps.indels.genotype.vcf \
+bcftools filter -s GQ20 -e "FORMAT/FT[*]!=''" 7.${output_name}.genotype_filter.SUPsite.snps.indels.genotype.vcf \
   > 8.${output_name}.GQfilter.genotype_filter.SUPsite.snps.indels.genotype.vcf
 
 
