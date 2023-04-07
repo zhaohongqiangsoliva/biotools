@@ -105,7 +105,7 @@ if __name__ == '__main__':
                     ss = line.split()
 
                     #update the performance for find individuals.
-                    INDMAP = {}
+                    INDMAP = {} ## O(1)
                     for x,y in zip(range(len(ss)),ss):
                         if y in INDMAP:
                             sys.stderr.write('ERROR: duplicate ids in input vcf: %s\n'%(y))

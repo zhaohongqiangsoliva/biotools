@@ -217,15 +217,15 @@ EOF
             # update bed file and interval list
             option_name = "WES"
             cmd_MR = self.mkdirofRsult(sample_name, option_name,self.partition)
-            options = f"{self.outputs}/{sample_name}/option_WES.json"
-            sample_log = f"{self.outputs}/{sample_name}/submit_wes.log"
+            options = f"{self.outputs}/{sample_name}/option_{option_name}.json"
+            sample_log = f"{self.outputs}/{sample_name}/submit_{option_name}.log"
             # cmd_WES = self.submit_Wes(
             #     WES_pipe["wdl"],
             #     f"{self.outputs}/{sample_name}/{sample_name}.json",
             #     options,
             #     WES_pipe["zip"],
             #     sample_log)
-            cmd_WES = self.submit(
+            cmd_SUB = self.submit(
                 submit_tools= global_options["cromwell_tools"],
                 wdl=WES_pipe["wdl"],
                 input_json=f"{self.outputs}/{sample_name}/{sample_name}.json",
@@ -233,16 +233,54 @@ EOF
                 zip_file=WES_pipe["zip"],
                 sample_log=sample_log
             )
-            make_step(cmd_WES, f"{self.outputs}/{sample_name}/4.sb_wes.sh")
-            cmd = cmd + [cmd_MR] + [cmd_WES]
+            make_step(cmd_SUB, f"{self.outputs}/{sample_name}/4.sb_{option_name}.sh")
+            cmd = cmd + [cmd_MR] + [cmd_SUB]
         return cmd
 
-        #5.modify json for WES pipe
-        #6.submit WES
-        #7.cp bam to result dir
-        #8.hard filter
-        #9.genotype filter
 
+
+
+
+    def WGS_process(self,bed,rander):
+
+        cmd = []
+        for samplelist in rander:
+            patient = samplelist["patient"]
+            lane = samplelist["lane"]
+            sample_name = samplelist["sample"]
+            ubamdir = os.path.join(self.outputs,sample_name,"cromwell/fq2ubam/outputs")
+            ubamlist = glob.glob(f"{ubamdir}/*unmapped.bam")
+            ####SETTING####
+            option_name = "WGS"
+            input_json_dict = json.load(open(WGS_pipe["wgs_input_json"]))
+            ###############
+
+            input_json_dict["WholeGenomeGermlineSingleSample.sample_and_unmapped_bams"]["sample_name"] = sample_name
+            input_json_dict["WholeGenomeGermlineSingleSample.sample_and_unmapped_bams"]["base_file_name"]=sample_name
+            input_json_dict["WholeGenomeGermlineSingleSample.sample_and_unmapped_bams"]["final_gvcf_base_name"]= sample_name
+            input_json_dict["WholeGenomeGermlineSingleSample.sample_and_unmapped_bams"]["flowcell_unmapped_bams"] = ubamlist
+            #input_json_dict["ExomeGermlineSingleSample.references"]["calling_interval_list"] =bed
+            json.dump(input_json_dict,open(f"{self.outputs}/{sample_name}/{sample_name}.json","w"),indent=4,sort_keys=True)
+            # TODO
+            # update bed file and interval list
+
+            cmd_MR = self.mkdirofRsult(sample_name, option_name,self.partition)
+            options = f"{self.outputs}/{sample_name}/option_{option_name}.json"
+            sample_log = f"{self.outputs}/{sample_name}/submit_{option_name}.log"
+
+            cmd_SUB = self.submit(
+                submit_tools= global_options["cromwell_tools"],
+                ####SETTING####
+                wdl=WGS_pipe["wdl"],
+                input_json=f"{self.outputs}/{sample_name}/{sample_name}.json",
+                options=options,
+                ####SETTING####
+                zip_file=WGS_pipe["zip"],
+                sample_log=sample_log
+            )
+            make_step(cmd_SUB, f"{self.outputs}/{sample_name}/4.sb_{option_name}.sh")
+            cmd = cmd + [cmd_MR] + [cmd_SUB]
+        return cmd
 
 
     def genotype(self):
@@ -332,11 +370,14 @@ if __name__ == '__main__':
 
     with open(script_dir +"/"+ args.config) as j:
         config_j = json.load(j)
-        bedtointerval = config_j['bedtointerval']
-        global_options = config_j["global"]
-        fastq2ubam = config_j["fastq2ubam"]
-        WES_pipe = config_j["WES_pipe"]
-        single_pipe = config_j["single_pipe"]
+        # bedtointerval = config_j['bedtointerval']
+        # global_options = config_j["global"]
+        # fastq2ubam = config_j["fastq2ubam"]
+        # WES_pipe = config_j["WES_pipe"]
+        # single_pipe = config_j["single_pipe"]
+        for k,v in config_j.items():
+            globals()[k] = v
+            print(k,v)
 
     pipe = pipeline(args.output,args.partition)
     if "fastp" in args.pipe:
@@ -357,6 +398,8 @@ if __name__ == '__main__':
                 print("error please input single cell fastq version as v2 or v3")
                 logger.error("not input single cell fastq version ")
                 exit(1)
+        if "wgs" in args.pipe:
+            cmds = pipe.WGS_process(args.bed, reader)
         # print(cmd)
         if not args.dryrun:
             for cmd in cmds:

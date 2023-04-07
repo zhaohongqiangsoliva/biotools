@@ -6,8 +6,8 @@ read -r -p "${SHELL_FOLDER_bin} Do u wanna adding it to PATH? [Y/n] " input
  
 case $input in
     [yY][eE][sS]|[yY])
-        echo -e "export PATH=\"\$PATH:${SHELL_FOLDER_bin}\"" >>~/.bashrc
-        echo -e "export PATH=\"\$PATH:${SHELL_FOLDER_bin}\"" >>~/.zshrc
+        printf "%s\n" "export PATH=\"\$PATH:${SHELL_FOLDER_bin}\"" >>~/.bashrc
+        printf "%s\n" "export PATH=\"\$PATH:${SHELL_FOLDER_bin}\"" >>~/.zshrc
         chmod -R 777 $SHELL_FOLDER
         ;;
  
