@@ -1,33 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="mycomputer" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" showNewOnSourceInSync="false">
-    <option name="confirmBeforeUploading" value="false" />
+  <component name="PublishConfigData">
     <serverData>
       <paths name="cromwell">
         <serverdata>
           <mappings>
-            <mapping deploy="/5_process" local="$PROJECT_DIR$/pipeline/5_process" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath path="/5_process" />
-          </excludedPaths>
         </serverdata>
       </paths>
       <paths name="gpu03">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
           </mappings>
         </serverdata>
       </paths>
       <paths name="mycomputer">
         <serverdata>
           <mappings>
-            <mapping deploy="" local="$USER_HOME$/Library/CloudStorage/OneDrive-个人/1.cloud/biotools/pipeline/5_process" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="mycomputer_disk">
+      <paths name="soliva@10.10.10.100:22 password">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="soliva@10.10.10.104:22 password">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="tengx">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
@@ -39,10 +54,18 @@
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="zhao@34.140.204.190:22">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
           </mappings>
         </serverdata>
       </paths>
     </serverData>
-    <option name="myAutoUpload" value="ON_EXPLICIT_SAVE" />
   </component>
 </project>
