@@ -6,7 +6,7 @@ output=$2
 annotation=$3
 hrun "
 docker run -i
- -v ${annotation}/vep/vep_data:/opt/vep/.vep
+  -v ${annotation}/vep/vep_data:/opt/vep/.vep
   -v ${annotation}/loftee/vep/vep_data:/loftee
   -v `pwd`:/data:rw -v ${annotation}/vep/:/plugin
   zihhuafang/ensembl_vep_loftee:v107 vep -i /data/${input}
@@ -17,6 +17,6 @@ docker run -i
   --custom /plugin/clinvar.vcf.gz,ClinVar,vcf,exact,0,CLNSIG,CLNREVSTAT,CLNDN
   --custom /plugin/gnomad/gnomad.genomes.v3.1.2.sites.merge.vcf.gz,gnomAD,vcf,exact,0,AF
   --plugin LoF,loftee_path:/opt/vep/.vep/Plugins/,gerp_bigwig:/loftee/gerp_conservation_scores.homo_sapiens.GRCh38.bw,human_ancestor_fa:/loftee/human_ancestor.fa.gz,conservation_file:/loftee/loftee.sql
-   --dir_plugins /opt/vep/.vep/Plugins/  --vcf -o /data/${output} --force_overwrite
-
+  --dir_plugins /opt/vep/.vep/Plugins/  --vcf -o /data/${output} --force_overwrite
+  --compress_output bgzip
 "

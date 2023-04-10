@@ -101,8 +101,10 @@ def Pathogenic(input,output,Pathogenics_name,rename):
     df=pd.read_table(input)
     sample_name = Pathogenics_name
     print(sample_name)
-    df = df[df.apply(find_Pathogenic,names=sample_name,axis=1)]
-
+    if Pathogenics_name:
+        df = df[df.apply(find_Pathogenic,names=sample_name,axis=1)]
+    else:
+        pass
     df = df.drop_duplicates(["CHROM-POS-REF-ALT", "Consequence"])
     if rename:
         re_name_list = rename
@@ -117,7 +119,7 @@ def Pathogenic(input,output,Pathogenics_name,rename):
     else:
         pass
     df = df.apply(splitpathogenic, names=sample_name, axis=1)
-    df.to_csv(output,index=False,compression="gzip",)
+    df.to_csv(output,index=False,)
 
 
 if __name__ == '__main__':
@@ -125,17 +127,23 @@ if __name__ == '__main__':
     parser.add_argument('input', help='input file 可以使用管道,也可以使用使用 Hsub input_file' ,nargs='?')
     parser.add_argument("-o","--output",help="output tsv file")
     parser.add_argument("-ped",dest="ped",help="ped file ")
-    parser.add_argument("-re", dest="rename", help="resort col names")
+    # parser.add_argument("-re", dest="rename", help="resort col names")
     args = parser.parse_args()
 
     if args.input is not  None:
         input_file = args.input
     else:
         input_file  = '/dev/stdin'
-    ped = pd.read_table(args.ped,header=None)
-    rename = list(ped[1])
-    pgname = list(ped[ped[5]==2][1])
-    print(rename,pgname
+    if args.ped:
+
+        ped = pd.read_table(args.ped,header=None)
+        pgname = list(ped[ped[5] == 2][1])
+        rename = list(ped[1])
+    else:
+        pgname=[]
+        rename = []
+
+    print(rename,pgname)
     Pathogenic(input_file,args.output,pgname,rename)
 
 
