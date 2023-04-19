@@ -68,6 +68,7 @@ class pipeline(object):
         sample_path = self.outputs + "/" + sample_name
         cmd = f"""
 mkdir -vp {self.outputs}/{sample_name}/cromwell/{option_name}/{{outputs,wf_logs,call_logs}}
+chmod -R 775 {self.outputs}/{sample_name}
 cp {self.options} {sample_path}/option_{option_name}.json 
 sed -i "s#/Users/michael_scott/cromwell/#{self.outputs}/{sample_name}/cromwell/{option_name}/#g" {sample_path}/option_{option_name}.json
 """
@@ -85,8 +86,8 @@ sed -i "s#/Users/michael_scott/cromwell/#{self.outputs}/{sample_name}/cromwell/{
         cmd=f'''
 #if fastq.gz change cat to zcat
 header=$(zcat {fastq1} | head -n 1)
-ID=$(echo $header | head -n 1 | cut -f 1-3 -d":" | sed 's/@//' | sed 's/:/./g'|sed 's#/#.#g')
-PU=$(echo $header | head -n 1 | cut -f 1-4 -d":" | sed 's/@//' | sed 's/:/./g'|sed 's#/#.#g')
+ID=$(echo $header | head -n 1 | cut -f 1-3 -d":" | sed 's/@//' | sed 's/:/./g'|sed 's#/#.#g'|sed 's/ /_/g')
+PU=$(echo $header | head -n 1 | cut -f 1-4 -d":" | sed 's/@//' | sed 's/:/./g'|sed 's#/#.#g'|sed 's/ /_/g')
 SM={sample_name}
 LB="$ID.$(echo $header | head -n 1 | grep -Eo "[ATGCN]+$")_.{lane}"
 cat> {sample_path}/{lane}.{sample_name}.fq2ubam.json<<EOF
@@ -250,32 +251,28 @@ EOF
             sample_name = samplelist["sample"]
             ubamdir = os.path.join(self.outputs,sample_name,"cromwell/fq2ubam/outputs")
             ubamlist = glob.glob(f"{ubamdir}/*unmapped.bam")
-            ####SETTING####
-            option_name = "WGS"
-            input_json_dict = json.load(open(WGS_pipe["wgs_input_json"]))
-            ###############
-
-            input_json_dict["WholeGenomeGermlineSingleSample.sample_and_unmapped_bams"]["sample_name"] = sample_name
-            input_json_dict["WholeGenomeGermlineSingleSample.sample_and_unmapped_bams"]["base_file_name"]=sample_name
-            input_json_dict["WholeGenomeGermlineSingleSample.sample_and_unmapped_bams"]["final_gvcf_base_name"]= sample_name
-            input_json_dict["WholeGenomeGermlineSingleSample.sample_and_unmapped_bams"]["flowcell_unmapped_bams"] = ubamlist
+            input_json_dict = json.load(open(WES_pipe["wes_input_json"]))
+            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["sample_name"] = sample_name
+            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["base_file_name"]=sample_name
+            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["final_gvcf_base_name"]= sample_name
+            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["flowcell_unmapped_bams"] = ubamlist
             #input_json_dict["ExomeGermlineSingleSample.references"]["calling_interval_list"] =bed
             json.dump(input_json_dict,open(f"{self.outputs}/{sample_name}/{sample_name}.json","w"),indent=4,sort_keys=True)
             # TODO
             # update bed file and interval list
-
+            ####SETTING####
+            option_name = "WGS"
+            ###############
             cmd_MR = self.mkdirofRsult(sample_name, option_name,self.partition)
             options = f"{self.outputs}/{sample_name}/option_{option_name}.json"
             sample_log = f"{self.outputs}/{sample_name}/submit_{option_name}.log"
 
             cmd_SUB = self.submit(
                 submit_tools= global_options["cromwell_tools"],
-                ####SETTING####
-                wdl=WGS_pipe["wdl"],
+                wdl=WES_pipe["wdl"],
                 input_json=f"{self.outputs}/{sample_name}/{sample_name}.json",
                 options=options,
-                ####SETTING####
-                zip_file=WGS_pipe["zip"],
+                zip_file=WES_pipe["zip"],
                 sample_log=sample_log
             )
             make_step(cmd_SUB, f"{self.outputs}/{sample_name}/4.sb_{option_name}.sh")

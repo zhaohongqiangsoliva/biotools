@@ -46,7 +46,7 @@ if __name__ == '__main__':
     indata = False
     INFO_COL = 7 # The column for INFO.
 
-    #include in the damaging if it has this annotation (pathogenic)
+    #include in the damaging if it has this annotation (6.pathogenic)
     include = ['Pathogenic','Pathogenic/Likely_pathogenic','Pathogenic/Likely_pathogenic,_risk_factor','Pathogenic,_risk_factor',
                'Pathogenic,_drug_response','Pathogenic,_other','Pathogenic,_protective','Pathogenic,_Affects','Pathogenic/Likely_pathogenic,_other',
                'Pathogenic/Likely_pathogenic,_drug_response','Pathogenic,_other,_risk_factor']

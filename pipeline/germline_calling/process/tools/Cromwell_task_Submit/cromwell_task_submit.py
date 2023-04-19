@@ -85,8 +85,8 @@ sed -i "s#/Users/michael_scott/cromwell/#{self.outputs}/{sample_name}/cromwell/{
         cmd=f'''
 #if fastq.gz change cat to zcat
 header=$(zcat {fastq1} | head -n 1)
-ID=$(echo $header | head -n 1 | cut -f 1-3 -d":" | sed 's/@//' | sed 's/:/./g'|sed 's#/#.#g')
-PU=$(echo $header | head -n 1 | cut -f 1-4 -d":" | sed 's/@//' | sed 's/:/./g'|sed 's#/#.#g')
+ID=$(echo $header | head -n 1 | cut -f 1-3 -d":" | sed 's/@//' | sed 's/:/./g'|sed 's#/#.#g'|sed 's/ /_/g')
+PU=$(echo $header | head -n 1 | cut -f 1-4 -d":" | sed 's/@//' | sed 's/:/./g'|sed 's#/#.#g'|sed 's/ /_/g')
 SM={sample_name}
 LB="$ID.$(echo $header | head -n 1 | grep -Eo "[ATGCN]+$")_.{lane}"
 cat> {sample_path}/{lane}.{sample_name}.fq2ubam.json<<EOF
