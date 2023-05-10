@@ -11,7 +11,7 @@ ${inputs}
 2-1.annotation_${output_name}.vcf.gz
 ${annotation}
 &&
-sh 2.annotation2tsvbcftools.sh
+sh ${SHELL_FOLDER}/2.annotation2tsvbcftools.sh
 2-1.annotation_${output_name}.vcf.gz
 2-2.annotation_${output_name}.tsv
 &&
@@ -19,7 +19,7 @@ bgzip 2-2.annotation_${output_name}.tsv
 &&
 
 zcat 2-2.annotation_${output_name}.tsv.gz
-|sh ${SHELL_FOLDER}/1.vepTsvGnomADFilter.py
+|python ${SHELL_FOLDER}/1.vepTsvGnomADFilter.py
 -H |bgzip > 2-3.annotation_${output_name}_filter_by_gnomad.tsv.gz
 &&
 

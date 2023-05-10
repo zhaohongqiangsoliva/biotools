@@ -1,0 +1,1 @@
+../mx_tools/VCF2AltCount.py

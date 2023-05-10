@@ -57,10 +57,10 @@ gatk  CalculateGenotypePosteriors \
 gatk VariantFiltration  \
  -V 6.${output_name}.SUPsite.snps.indels.genotype.vcf.gz \
  --genotype-filter-expression "GQ < 20" --genotype-filter-name "GQ20" \
- -O 7.${output_name}.genotype_filter.SUPsite.snps.indels.genotype.vcf
+ -O 7.${output_name}.genotype_filter.SUPsite.snps.indels.genotype.vcf.gz
 
 bcftools filter -s GQ20 -e "FORMAT/FT[*]!=''" -O z 7.${output_name}.genotype_filter.SUPsite.snps.indels.genotype.vcf.gz \
-  > 8.${output_name}.GQfilter.genotype_filter.SUPsite.snps.indels.genotype.vcf
+  > 8.${output_name}.GQfilter.genotype_filter.SUPsite.snps.indels.genotype.vcf.gz
 
 
 

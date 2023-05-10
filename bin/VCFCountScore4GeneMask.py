@@ -1,0 +1,1 @@
+../mx_tools/VCFCountScore4GeneMask.py

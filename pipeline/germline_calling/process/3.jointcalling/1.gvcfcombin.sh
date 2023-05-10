@@ -26,3 +26,5 @@ fi
 #parallel -j 10 "gatk GenotypeGVCFs -R ${fasta}  -V  gendb://Genomicsdb.{} -O ${output_name}{}.vcf -ped $ped -L chr{} -G StandardAnnotation --only-output-calls-starting-in-intervals --use-new-qual-calculator -D ${reference}/Homo_sapiens_assembly38.dbsnp138.vcf" :::: list.txt
 
 gatk GatherVcfs `for i in $(cat list.txt);do echo "-I ${output_name}$i.vcf";done` -O 2.${output_name}.vcf
+bgzip 2.${output_name}.vcf
+tabix -f 2.${output_name}.vcf.gz
