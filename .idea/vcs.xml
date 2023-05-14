@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/plugin/damai_tickets" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tmp/xsv" vcs="Git" />
   </component>
 </project>

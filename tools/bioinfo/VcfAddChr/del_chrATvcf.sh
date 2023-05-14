@@ -1,0 +1,1 @@
+zcat $1|sed 's/##contig=<ID=chr/##contig=<ID=/g'  | sed 's/^chr//g'  |bgzip > $2
