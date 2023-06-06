@@ -11,6 +11,12 @@ format hrun "
             |command 2
             |command 3
 "
+hrun EOF
+            command 1
+            |command 2
+            |command 3
+EOF
+
 '''
 import re
 import sys, os
@@ -81,7 +87,7 @@ if __name__ == '__main__':
     sys.stdout.write(' '.join(cmd_arr)+"\n")
     if args.s:
         with open(args.s,"w") as f:
-            f.write(f"""hrun "{inputs} \n" """)
+            f.write(' '.join(cmd_arr))
 sys.stdout.flush()
 sys.stdout.close()
 sys.stderr.flush()

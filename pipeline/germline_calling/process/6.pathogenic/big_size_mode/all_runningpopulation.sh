@@ -11,7 +11,7 @@ ${inputs}
 ${annotation}|bash
 
 &&
-sh 2.annotation2tsvbcftools.sh
+sh ${SHELL_FOLDER}/2.annotation2tsvbcftools.sh
 2-1.annotation_${output_name}.vcf.gz
 2-2.annotation_${output_name}.tsv
 &&
@@ -24,7 +24,7 @@ zcat 2-2.annotation_${output_name}.tsv.gz
 &&
 
 zcat 2-3.annotation_${output_name}_filter_by_gnomad.tsv.gz
-|python 2.vep_Pathogenic_fillter.py
+|python ${SHELL_FOLDER}/2.vep_Pathogenic_fillter.py
 -o 2-4.annotation_${output_name}_pathogenic.csv
 
 "

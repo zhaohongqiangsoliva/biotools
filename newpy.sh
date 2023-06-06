@@ -31,9 +31,41 @@ from docopt import docopt
             then
                 echo "${p} project already exists"
             else    
-                mkdir -pv ${p} ${p}/{bin,0.data,1.running,note,result,process/log}
+                current_date=$(date +%Y-%m-%d)
 
-                touch ${p}/process/{main.sh,main.py}
+                # 创建目录函数
+                create_directory() {
+                    directory=$1
+                    if [ ! -d "$directory" ]; then
+                        mkdir -p "$directory"
+                        echo "Created directory: $directory"
+                    else
+                        echo "Directory already exists: $directory"
+                    fi
+                }
+
+                # 创建 data 目录及子目录
+                create_directory "${p}/data/raw/$current_date"
+                create_directory "${p}/data/processed/$current_date"
+
+                # 创建 code 目录及子目录
+                create_directory "${p}/code/preprocessing"
+                create_directory "${p}/code/analysis"
+                create_directory "${p}/code/models"
+                create_directory "${p}/code/evaluation"
+
+                # 创建 experiments 目录及子目录
+                create_directory "${p}/experiments/$current_date"_experiment1
+
+
+                # 创建 results 目录及子目录
+                create_directory "${p}/results/$current_date"_experiment1
+
+
+                # 创建 documentation 目录及子目录
+                create_directory "${p}/documentation/paper/$current_date"
+
+                echo "Directory structure created successfully!"
             fi
             ;;
         x)  

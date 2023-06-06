@@ -24,7 +24,7 @@ zcat 2-2.annotation_${output_name}.tsv.gz
 &&
 
 zcat 2-3.annotation_${output_name}_filter_by_gnomad.tsv.gz
-|python 2.vep_Pathogenic_fillter.py -ped ${ped}
+|python ${SHELL_FOLDER}/2.vep_Pathogenic_fillter.py -ped ${ped}
 -o 2-4.annotation_${output_name}_pathogenic.csv
 
 "

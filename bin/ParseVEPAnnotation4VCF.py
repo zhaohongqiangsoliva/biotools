@@ -2,7 +2,7 @@
 
 """
 
-    Parse VEP 4.annotation for VCF file.
+    Parse VEP annotation for VCF file.
 
     @Author: wavefancy@gmail.com
 

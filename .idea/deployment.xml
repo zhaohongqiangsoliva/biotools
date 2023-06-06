@@ -26,7 +26,7 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="master_tools">
+      <paths name="master_zhaohq">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
@@ -50,39 +50,7 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="soliva@10.10.10.100:22 password">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="soliva@10.10.10.104:22 password">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="tengx">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
       <paths name="wuzh02.hpccube.com">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="zhao@34.140.204.190:22">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
