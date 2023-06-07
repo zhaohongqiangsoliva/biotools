@@ -124,8 +124,8 @@ if __name__ == '__main__':
     SMOOTH = True if args['--sb'] else None
     B_COLOR = 'lc "' + args['--sbc'] + '"' if args['--sbc'] else ''
 
-    CODE_FILE = tempfile.NamedTemporaryFile(mode='w',dir="./",delete=DEL_TEMP)
-    DATA_FILE = tempfile.NamedTemporaryFile(mode='w',dir="./",delete=DEL_TEMP)
+    CODE_FILE = tempfile.NamedTemporaryFile(mode='w', dir="../mx_tools/", delete=DEL_TEMP)
+    DATA_FILE = tempfile.NamedTemporaryFile(mode='w', dir="../mx_tools/", delete=DEL_TEMP)
     # fit a density use gnuplot Gaussian kernels. 'kdensity'
     # convert input array as histogram
     # https://docs.scipy.org/doc/numpy/reference/generated/numpy.histogram.html
