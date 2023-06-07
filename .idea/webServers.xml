@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c5cb28a4-cec3-4495-8b14-75fadd4a5e9e" name="wuzh02.hpccube.com">
+        <fileTransfer rootFolder="/work/home/zhaohq/zhaohq" accessType="SFTP" host="wuzh02.hpccube.com" port="65091" sshConfigId="192c2878-0918-4309-b12a-2b1d55497f47" sshConfig="zhaohq@wuzh02.hpccube.com:65091 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="a6363b49-68ce-4993-a36f-9fa2a01f38cd" name="cromwell">
+        <fileTransfer rootFolder="/work/share/ac7m4df1o5/bin/cromwell" accessType="SFTP" host="wuzh02.hpccube.com" port="65091" sshConfigId="25f10572-9bea-427b-8c29-e1de3d84fcb3" sshConfig="shuguang_BIG" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="f807e82b-c6ef-4513-a0bf-8ad39b7cb990" name="gpu03">
+        <fileTransfer rootFolder="/home/zhaohq/work_space/" accessType="SFTP" host="192.168.118.85" port="22" sshConfigId="a4189fd2-8a77-4633-828c-589707af53cf" sshConfig="zhaohq@192.168.118.85:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="06b5dfe8-00de-4277-ba59-8835328b8a9f" name="mycomputer">
+        <fileTransfer rootFolder="/data" accessType="SFTP" host="39.107.228.251" port="2288" sshConfigId="bffabea1-2094-4189-a6ca-4d7214e00138" sshConfig="soliva@39.107.228.251:2288 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="57e41e42-2ba2-4de1-a9c6-54756a34c714" name="mycomputer_disk">
+        <fileTransfer rootFolder="/disk" accessType="SFTP" host="39.107.228.251" port="2288" sshConfigId="bffabea1-2094-4189-a6ca-4d7214e00138" sshConfig="soliva@39.107.228.251:2288 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="bcb74e02-473c-4417-b7d3-56b6f4d9c04f" name="master">
+        <fileTransfer rootFolder="/pmaster/pipeline/cromwell" accessType="SFTP" host="192.168.118.93" port="2276" sshConfigId="60b89d80-519e-41eb-8de9-fc7ed01f1d0e" sshConfig="zhaohq@192.168.118.93:2276 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="b5ba28e6-b550-4cd2-a886-ebcf2af1ce65" name="master_zhaohq">
+        <fileTransfer rootFolder="/srv/zhaohq" accessType="SFTP" host="192.168.118.93" port="2276" sshConfigId="60b89d80-519e-41eb-8de9-fc7ed01f1d0e" sshConfig="zhaohq@192.168.118.93:2276 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

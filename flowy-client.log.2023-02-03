@@ -1,0 +1,37 @@
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","object_id":"9IzZ3-iG1zvHB1S1LYp8:folder","deserializer":"flowy_folder::services::folder_editor::FolderRevisionSerde","deserialize_revisions":1,"elapsed_milliseconds":0}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","object_id":"vKMQKsD_pe","deserializer":"flowy_document::editor::document::DocumentRevisionSerde","deserialize_revisions":1,"elapsed_milliseconds":0}
+{"msg":"Setup rust to flutter stream with port 1988636781349991","log.file":"dart-notify\\src\\dart\\stream_sender.rs","log.line":21}
+{"msg":"flowy_folder::services::view::controller","error":"0: \"FolderEditor should be initialized after user login in.\""}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","elapsed_milliseconds":0,"object_id":"aAgxz1hTcqytspdq3bYS:folder","deserializer":"flowy_folder::services::folder_editor::FolderRevisionSerde","deserialize_revisions":1}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","object_id":"SIW8Omv1Cn","deserialize_revisions":1,"elapsed_milliseconds":0,"deserializer":"flowy_document::editor::document::DocumentRevisionSerde"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","deserialize_revisions":1,"deserializer":"flowy_document::editor::document::DocumentRevisionSerde","object_id":"SIW8Omv1Cn","elapsed_milliseconds":0}
+{"msg":"Setup rust to flutter stream with port 1988636781349991","log.file":"dart-notify\\src\\dart\\stream_sender.rs","log.line":21}
+{"msg":"flowy_folder::services::view::controller","error":"0: \"FolderEditor should be initialized after user login in.\""}
+{"msg":"flowy_folder::services::view::controller","error":"0: \"FolderEditor should be initialized after user login in.\""}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","object_id":"--qL8K33gXYAhSg87N-Y:folder","deserialize_revisions":1,"deserializer":"flowy_folder::services::folder_editor::FolderRevisionSerde","elapsed_milliseconds":0}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","object_id":"oBkv969zym","deserializer":"flowy_document::editor::document::DocumentRevisionSerde","deserialize_revisions":1,"elapsed_milliseconds":0}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","elapsed_milliseconds":0,"deserializer":"flowy_document::editor::document::DocumentRevisionSerde","object_id":"oBkv969zym","deserialize_revisions":1}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","deserialize_revisions":1,"deserializer":"flowy_document::editor::document::DocumentRevisionSerde","object_id":"oBkv969zym","elapsed_milliseconds":0}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","deserializer":"flowy_grid::services::grid_editor::GridRevisionSerde","deserialize_revisions":1,"object_id":"V9_0qpzGZX","elapsed_milliseconds":0}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","deserializer":"flowy_grid::services::block_editor::GridBlockRevisionSerde","deserialize_revisions":1,"object_id":"3ElQzkbLc7","elapsed_milliseconds":0}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","deserializer":"flowy_grid::services::view_editor::trait_impl::GridViewRevisionSerde","deserialize_revisions":1,"elapsed_milliseconds":0,"object_id":"V9_0qpzGZX"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","elapsed_milliseconds":1,"object_id":"oBkv969zym","deserialize_revisions":1,"deserializer":"flowy_document::editor::document::DocumentRevisionSerde"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","object_id":"oBkv969zym","deserializer":"flowy_document::editor::document::DocumentRevisionSerde","deserialize_revisions":1,"elapsed_milliseconds":1}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","elapsed_milliseconds":0,"deserializer":"flowy_document::editor::document::DocumentRevisionSerde","deserialize_revisions":1,"object_id":"oBkv969zym"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - START]","line":130,"file":"flowy-revision\\src\\rev_manager.rs"}
+{"msg":"[⛳ REVISION_MANAGER_INITIALIZE - END]","line":130,"file":"flowy-revision\\src\\rev_manager.rs","elapsed_milliseconds":0,"deserializer":"flowy_document::editor::document::DocumentRevisionSerde","deserialize_revisions":1,"object_id":"oBkv969zym"}
