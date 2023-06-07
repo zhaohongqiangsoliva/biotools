@@ -38,14 +38,14 @@
         </fileTransfer>
       </webServer>
       <webServer id="bcb74e02-473c-4417-b7d3-56b6f4d9c04f" name="master">
-        <fileTransfer rootFolder="/pmaster/pipeline/cromwell" accessType="SFTP" host="192.168.118.93" port="2276" sshConfigId="60b89d80-519e-41eb-8de9-fc7ed01f1d0e" sshConfig="zhaohq@192.168.118.93:2276 password">
+        <fileTransfer rootFolder="/pmaster/pipeline/cromwell" accessType="SFTP" host="192.168.117.75" port="21175" sshConfigId="60b89d80-519e-41eb-8de9-fc7ed01f1d0e" sshConfig="zhaohq@192.168.117.75:21175 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
       <webServer id="b5ba28e6-b550-4cd2-a886-ebcf2af1ce65" name="master_zhaohq">
-        <fileTransfer rootFolder="/srv/zhaohq" accessType="SFTP" host="192.168.118.93" port="2276" sshConfigId="60b89d80-519e-41eb-8de9-fc7ed01f1d0e" sshConfig="zhaohq@192.168.118.93:2276 password">
+        <fileTransfer rootFolder="/pmaster/zhaohq" accessType="SFTP" host="192.168.117.75" port="21175" sshConfigId="60b89d80-519e-41eb-8de9-fc7ed01f1d0e" sshConfig="zhaohq@192.168.117.75:21175 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

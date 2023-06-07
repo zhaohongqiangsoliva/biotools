@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 usage() { echo -e "Usage: $0 [-s <string>] [-p <string>] [-x <string>] \ncreate template for python -s new a script -p is new a project  " 1>&2; exit 1; }
 
 while getopts ":xs:p:" o; do

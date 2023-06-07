@@ -11,7 +11,7 @@
       <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="localhost" id="bc822f81-7a1b-4540-a2db-5b7f51d28308" port="22" customName="mycomputer_disk" nameFormat="CUSTOM">
         <option name="customName" value="mycomputer_disk" />
       </sshConfig>
-      <sshConfig authType="PASSWORD" host="192.168.118.93" id="60b89d80-519e-41eb-8de9-fc7ed01f1d0e" port="2276" nameFormat="DESCRIPTIVE" username="zhaohq" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="192.168.117.75" id="60b89d80-519e-41eb-8de9-fc7ed01f1d0e" port="21175" nameFormat="DESCRIPTIVE" username="zhaohq" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>

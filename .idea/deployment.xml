@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData">
+  <component name="PublishConfigData" autoUpload="Always" serverName="mycomputer_disk" compareModeInSync="TIMESTAMP" showNewOnSourceInSync="false">
     <serverData>
       <paths name="cromwell">
         <serverdata>
@@ -29,7 +29,7 @@
       <paths name="master_zhaohq">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/tools/biotools" local="$PROJECT_DIR$" web="/" />
             <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
           </mappings>
         </serverdata>
@@ -45,8 +45,8 @@
       <paths name="mycomputer_disk">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
+            <mapping deploy="/tools/google_driver/biotools" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/tools/google_driver/cromwell" local="$PROJECT_DIR$/../cromwell" web="/" />
           </mappings>
         </serverdata>
       </paths>
@@ -59,5 +59,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
