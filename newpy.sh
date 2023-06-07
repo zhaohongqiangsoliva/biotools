@@ -31,6 +31,7 @@ from docopt import docopt
             then
                 echo "${p} project already exists"
             else    
+                # 获取当前日期
                 current_date=$(date +%Y-%m-%d)
 
                 # 创建目录函数
@@ -45,22 +46,24 @@ from docopt import docopt
                 }
 
                 # 创建 data 目录及子目录
-                create_directory "${p}/data/raw/$current_date"
-                create_directory "${p}/data/processed/$current_date"
+                create_directory "${p}/data/01_raw/$current_date"
+                create_directory "${p}/data/02_processed/$current_date"
 
                 # 创建 code 目录及子目录
-                create_directory "${p}/code/preprocessing"
-                create_directory "${p}/code/analysis"
-                create_directory "${p}/code/models"
-                create_directory "${p}/code/evaluation"
+                create_directory "${p}/code/01_preprocessing"
+                create_directory "${p}/code/02_analysis"
+                create_directory "${p}/code/03_models"
+                create_directory "${p}/code/04_evaluation"
 
                 # 创建 experiments 目录及子目录
-                create_directory "${p}/experiments/$current_date"_experiment1
-
+                create_directory "${p}/experiments/01_$current_date"_experiment1
+                create_directory "${p}/experiments/02_$current_date"_experiment2
+                create_directory "${p}/experiments/03_$current_date"_experiment3
 
                 # 创建 results 目录及子目录
-                create_directory "${p}/results/$current_date"_experiment1
-
+                create_directory "${p}/results/01_$current_date"_experiment1
+                create_directory "${p}/results/02_$current_date"_experiment2
+                create_directory "${p}/results/03_$current_date"_experiment3
 
                 # 创建 documentation 目录及子目录
                 create_directory "${p}/documentation/paper/$current_date"
