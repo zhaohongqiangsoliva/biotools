@@ -59,6 +59,7 @@ if __name__ == '__main__':
     # linecomment = '//'
     linecomment = '#'
     linebreaker = '!!'
+    
 
 
     lines = inputs.strip()
@@ -86,8 +87,8 @@ if __name__ == '__main__':
                     cmd_arr.append(cmd)
     sys.stdout.write(' '.join(cmd_arr)+"\n")
     if args.s:
-        with open(args.s,"w") as f:
-            f.write(' '.join(cmd_arr))
+        with open(args.s,"a") as f:
+            f.write(' '.join(cmd_arr)+"\n")
 sys.stdout.flush()
 sys.stdout.close()
 sys.stderr.flush()

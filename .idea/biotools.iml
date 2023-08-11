@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/web/imputation_server/watch-fastapi/backend/models" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/imputation_server/webserver/backend" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/imputation_server/webserver/backend/api" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/imputation_server/webserver/backend/core" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/imputation_server/webserver/backend/models" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/web/imputation_server/webserver/backend/scheams" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/../cromwell" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

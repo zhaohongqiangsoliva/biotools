@@ -26,14 +26,14 @@
       <webServer id="06b5dfe8-00de-4277-ba59-8835328b8a9f" name="mycomputer">
         <fileTransfer rootFolder="/data" accessType="SFTP" host="39.107.228.251" port="2288" sshConfigId="bffabea1-2094-4189-a6ca-4d7214e00138" sshConfig="soliva@39.107.228.251:2288 password">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
       <webServer id="57e41e42-2ba2-4de1-a9c6-54756a34c714" name="mycomputer_disk">
         <fileTransfer rootFolder="/disk" accessType="SFTP" host="39.107.228.251" port="2288" sshConfigId="bffabea1-2094-4189-a6ca-4d7214e00138" sshConfig="soliva@39.107.228.251:2288 password">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
@@ -48,6 +48,20 @@
         <fileTransfer rootFolder="/pmaster/zhaohq" accessType="SFTP" host="192.168.117.75" port="21175" sshConfigId="60b89d80-519e-41eb-8de9-fc7ed01f1d0e" sshConfig="zhaohq@192.168.117.75:21175 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="2133018e-0a21-4977-ba0f-d46a165b4ae9" name="mycompyter_pmaster">
+        <fileTransfer rootFolder="/pmaster/zhaohq" accessType="SFTP" host="39.107.228.251" port="2288" sshConfigId="bffabea1-2094-4189-a6ca-4d7214e00138" sshConfig="soliva@39.107.228.251:2288 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="46966764-0d23-4a3d-ae51-277c1bdf13c5" name="mycomputer_master_cromwell">
+        <fileTransfer rootFolder="/pmaster/pipeline/cromwell" accessType="SFTP" host="39.107.228.251" port="2288" sshConfigId="bffabea1-2094-4189-a6ca-4d7214e00138" sshConfig="soliva@39.107.228.251:2288 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>

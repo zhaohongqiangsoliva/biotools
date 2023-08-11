@@ -1,0 +1,1 @@
+docker build -t solivehong/imputation_server_web --network host .

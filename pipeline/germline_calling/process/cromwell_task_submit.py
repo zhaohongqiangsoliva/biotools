@@ -68,7 +68,6 @@ class pipeline(object):
         sample_path = self.outputs + "/" + sample_name
         cmd = f"""
 mkdir -vp {self.outputs}/{sample_name}/cromwell/{option_name}/{{outputs,wf_logs,call_logs}}
-chmod -R 775 {self.outputs}/{sample_name}
 cp {self.options} {sample_path}/option_{option_name}.json 
 sed -i "s#/Users/michael_scott/cromwell/#{self.outputs}/{sample_name}/cromwell/{option_name}/#g" {sample_path}/option_{option_name}.json
 """
@@ -131,7 +130,16 @@ EOF
         cmd = f"{submit_tools} {wdl} {input_json} {options} {zip_file} > {sample_log}"
         return cmd
 
-
+    def json_modify(self):
+        ubamlist = glob.glob(f"{ubamdir}/*unmapped.bam")
+        input_json_dict = json.load(open(WES_pipe["wes_input_json"]))
+        input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["sample_name"] = sample_name
+        input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["base_file_name"] = sample_name
+        input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["final_gvcf_base_name"] = sample_name
+        input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["flowcell_unmapped_bams"] = ubamlist
+        input_json_dict["ExomeGermlineSingleSample.references"]["calling_interval_list"] = bed
+        json.dump(input_json_dict, open(f"{self.outputs}/{sample_name}/{sample_name}.json", "w"), indent=4,
+                  sort_keys=True)
 
 
 
@@ -251,12 +259,14 @@ EOF
             sample_name = samplelist["sample"]
             ubamdir = os.path.join(self.outputs,sample_name,"cromwell/fq2ubam/outputs")
             ubamlist = glob.glob(f"{ubamdir}/*unmapped.bam")
-            input_json_dict = json.load(open(WES_pipe["wes_input_json"]))
-            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["sample_name"] = sample_name
-            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["base_file_name"]=sample_name
-            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["final_gvcf_base_name"]= sample_name
-            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["flowcell_unmapped_bams"] = ubamlist
+            ####################################################################
+            input_json_dict = json.load(open(WGS_pipe["wgs_input_json"]))
+            input_json_dict["WholeGenomeGermlineSingleSample.sample_and_unmapped_bams"]["sample_name"] = sample_name
+            input_json_dict["WholeGenomeGermlineSingleSample.sample_and_unmapped_bams"]["base_file_name"]=sample_name
+            input_json_dict["WholeGenomeGermlineSingleSample.sample_and_unmapped_bams"]["final_gvcf_base_name"]= sample_name
+            input_json_dict["WholeGenomeGermlineSingleSample.sample_and_unmapped_bams"]["flowcell_unmapped_bams"] = ubamlist
             #input_json_dict["ExomeGermlineSingleSample.references"]["calling_interval_list"] =bed
+            #######################################################################
             json.dump(input_json_dict,open(f"{self.outputs}/{sample_name}/{sample_name}.json","w"),indent=4,sort_keys=True)
             # TODO
             # update bed file and interval list
@@ -269,10 +279,10 @@ EOF
 
             cmd_SUB = self.submit(
                 submit_tools= global_options["cromwell_tools"],
-                wdl=WES_pipe["wdl"],
+                wdl=WGS_pipe["wdl"],
                 input_json=f"{self.outputs}/{sample_name}/{sample_name}.json",
                 options=options,
-                zip_file=WES_pipe["zip"],
+                zip_file=WGS_pipe["zip"],
                 sample_log=sample_log
             )
             make_step(cmd_SUB, f"{self.outputs}/{sample_name}/4.sb_{option_name}.sh")
@@ -367,6 +377,7 @@ if __name__ == '__main__':
 
     with open(script_dir +"/"+ args.config) as j:
         config_j = json.load(j)
+        print(config_j)
         # bedtointerval = config_j['bedtointerval']
         # global_options = config_j["global"]
         # fastq2ubam = config_j["fastq2ubam"]

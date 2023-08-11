@@ -1,0 +1,104 @@
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Added job "part1_Rsync" to job store "default"
+INFO:apscheduler.scheduler:Added job "part2_CromwellSubmit" to job store "default"
+INFO:apscheduler.scheduler:Added job "part3_TaskMonitoring" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2023-07-12 14:42:41.307570+08:00 (in 9.993131 seconds)
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+INFO:apscheduler.executors.default:Running job "part1_Rsync (trigger: interval[0:00:10], next run at: 2023-07-12 14:42:41 CST)" (scheduled at 2023-07-12 14:42:41.307570+08:00)
+INFO:apscheduler.executors.default:Running job "part2_CromwellSubmit (trigger: interval[0:00:10], next run at: 2023-07-12 14:42:41 CST)" (scheduled at 2023-07-12 14:42:41.307808+08:00)
+INFO:apscheduler.executors.default:Running job "part3_TaskMonitoring (trigger: interval[0:00:10], next run at: 2023-07-12 14:42:41 CST)" (scheduled at 2023-07-12 14:42:41.307959+08:00)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2023-07-12 14:42:51.307570+08:00 (in 9.981873 seconds)
+INFO:apscheduler.executors.default:Job "part1_Rsync (trigger: interval[0:00:10], next run at: 2023-07-12 14:42:51 CST)" executed successfully
+INFO:root:jobname=part1_Rsync|jobtrigger=interval[0:00:10]|jobtime=2023-07-12 14:42:41.307570+08:00|retval=None
+INFO:apscheduler.executors.default:Job "part2_CromwellSubmit (trigger: interval[0:00:10], next run at: 2023-07-12 14:42:51 CST)" executed successfully
+INFO:root:jobname=part2_CromwellSubmit|jobtrigger=interval[0:00:10]|jobtime=2023-07-12 14:42:41.307808+08:00|retval=None
+INFO:root:part3_TaskMonitoring --- Check Running Jobs1690a7ec-a374-4270-9733-4f3820c15d2f
+INFO:pika.adapters.utils.connection_workflow:Pika version 1.3.1 connecting to ('192.168.77.45', 5672)
+INFO:pika.adapters.utils.io_services_utils:Socket connected: <socket.socket fd=10, family=2, type=1, proto=6, laddr=('192.168.77.45', 39900), raddr=('192.168.77.45', 5672)>
+INFO:pika.adapters.utils.connection_workflow:Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f718c9660d0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f718c9660d0> params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>).
+INFO:pika.adapters.utils.connection_workflow:AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f718c9660d0> params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>
+INFO:pika.adapters.utils.connection_workflow:AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f718c9660d0> params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>
+INFO:pika.adapters.blocking_connection:Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f718c9660d0> params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>
+INFO:pika.adapters.blocking_connection:Created channel=1
+INFO:pika.adapters.blocking_connection:Closing connection (200): Normal shutdown
+INFO:pika.channel:Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f718c9660d0> params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>>
+INFO:pika.channel:Received <Channel.CloseOk> on <Channel number=1 CLOSING conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f718c9660d0> params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>>
+INFO:pika.connection:Closing connection (200): 'Normal shutdown'
+INFO:pika.adapters.utils.io_services_utils:Aborting transport connection: state=1; <socket.socket fd=10, family=2, type=1, proto=6, laddr=('192.168.77.45', 39900), raddr=('192.168.77.45', 5672)>
+INFO:pika.adapters.utils.io_services_utils:_AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=None; <socket.socket fd=10, family=2, type=1, proto=6, laddr=('192.168.77.45', 39900), raddr=('192.168.77.45', 5672)>
+INFO:pika.adapters.utils.io_services_utils:Deactivating transport: state=1; <socket.socket fd=10, family=2, type=1, proto=6, laddr=('192.168.77.45', 39900), raddr=('192.168.77.45', 5672)>
+INFO:pika.connection:AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=None; pending-error=ConnectionClosedByClient: (200) 'Normal shutdown'
+INFO:pika.connection:Stack terminated due to ConnectionClosedByClient: (200) 'Normal shutdown'
+INFO:pika.adapters.utils.io_services_utils:Closing transport socket and unlinking: state=3; <socket.socket fd=10, family=2, type=1, proto=6, laddr=('192.168.77.45', 39900), raddr=('192.168.77.45', 5672)>
+INFO:pika.adapters.blocking_connection:User-initiated close: result=BlockingConnection__OnClosedArgs(connection=<SelectConnection CLOSED transport=None params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>, error=ConnectionClosedByClient: (200) 'Normal shutdown')
+INFO:apscheduler.executors.default:Job "part3_TaskMonitoring (trigger: interval[0:00:10], next run at: 2023-07-12 14:42:51 CST)" executed successfully
+INFO:root:jobname=part3_TaskMonitoring|jobtrigger=interval[0:00:10]|jobtime=2023-07-12 14:42:41.307959+08:00|retval=None
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2023-07-12 14:43:01.307570+08:00 (in 9.941878 seconds)
+INFO:apscheduler.executors.default:Running job "part1_Rsync (trigger: interval[0:00:10], next run at: 2023-07-12 14:43:01 CST)" (scheduled at 2023-07-12 14:42:51.307570+08:00)
+INFO:apscheduler.executors.default:Running job "part2_CromwellSubmit (trigger: interval[0:00:10], next run at: 2023-07-12 14:43:01 CST)" (scheduled at 2023-07-12 14:42:51.307808+08:00)
+INFO:apscheduler.executors.default:Running job "part3_TaskMonitoring (trigger: interval[0:00:10], next run at: 2023-07-12 14:43:01 CST)" (scheduled at 2023-07-12 14:42:51.307959+08:00)
+INFO:apscheduler.executors.default:Job "part2_CromwellSubmit (trigger: interval[0:00:10], next run at: 2023-07-12 14:43:01 CST)" executed successfully
+INFO:root:jobname=part2_CromwellSubmit|jobtrigger=interval[0:00:10]|jobtime=2023-07-12 14:42:51.307808+08:00|retval=None
+INFO:apscheduler.executors.default:Job "part1_Rsync (trigger: interval[0:00:10], next run at: 2023-07-12 14:43:01 CST)" executed successfully
+INFO:root:jobname=part1_Rsync|jobtrigger=interval[0:00:10]|jobtime=2023-07-12 14:42:51.307570+08:00|retval=None
+INFO:apscheduler.executors.default:Job "part3_TaskMonitoring (trigger: interval[0:00:10], next run at: 2023-07-12 14:43:01 CST)" executed successfully
+INFO:root:jobname=part3_TaskMonitoring|jobtrigger=interval[0:00:10]|jobtime=2023-07-12 14:42:51.307959+08:00|retval=None
+INFO:apscheduler.scheduler:Scheduler has been shut down
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:No jobs; waiting until a job is added
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Added job "part1_Rsync" to job store "default"
+INFO:apscheduler.scheduler:Added job "part2_CromwellSubmit" to job store "default"
+INFO:apscheduler.scheduler:Added job "part3_TaskMonitoring" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+INFO:apscheduler.executors.default:Running job "part1_Rsync (trigger: interval[0:00:10], next run at: 2023-07-12 15:08:42 CST)" (scheduled at 2023-07-12 15:08:42.637931+08:00)
+INFO:apscheduler.executors.default:Running job "part2_CromwellSubmit (trigger: interval[0:00:10], next run at: 2023-07-12 15:08:42 CST)" (scheduled at 2023-07-12 15:08:42.638146+08:00)
+INFO:apscheduler.executors.default:Job "part1_Rsync (trigger: interval[0:00:10], next run at: 2023-07-12 15:08:52 CST)" executed successfully
+INFO:apscheduler.executors.default:Running job "part3_TaskMonitoring (trigger: interval[0:00:10], next run at: 2023-07-12 15:08:42 CST)" (scheduled at 2023-07-12 15:08:42.638323+08:00)
+INFO:apscheduler.executors.default:Job "part2_CromwellSubmit (trigger: interval[0:00:10], next run at: 2023-07-12 15:08:52 CST)" executed successfully
+INFO:apscheduler.executors.default:Job "part3_TaskMonitoring (trigger: interval[0:00:10], next run at: 2023-07-12 15:08:52 CST)" executed successfully
+INFO:apscheduler.executors.default:Running job "part1_Rsync (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:02 CST)" (scheduled at 2023-07-12 15:08:52.637931+08:00)
+INFO:apscheduler.executors.default:Running job "part2_CromwellSubmit (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:02 CST)" (scheduled at 2023-07-12 15:08:52.638146+08:00)
+INFO:apscheduler.executors.default:Running job "part3_TaskMonitoring (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:02 CST)" (scheduled at 2023-07-12 15:08:52.638323+08:00)
+INFO:apscheduler.executors.default:Job "part1_Rsync (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:02 CST)" executed successfully
+INFO:apscheduler.executors.default:Job "part2_CromwellSubmit (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:02 CST)" executed successfully
+INFO:apscheduler.executors.default:Job "part3_TaskMonitoring (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:02 CST)" executed successfully
+INFO:apscheduler.executors.default:Running job "part1_Rsync (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:12 CST)" (scheduled at 2023-07-12 15:09:02.637931+08:00)
+INFO:apscheduler.executors.default:Running job "part2_CromwellSubmit (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:12 CST)" (scheduled at 2023-07-12 15:09:02.638146+08:00)
+INFO:apscheduler.executors.default:Running job "part3_TaskMonitoring (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:12 CST)" (scheduled at 2023-07-12 15:09:02.638323+08:00)
+INFO:apscheduler.executors.default:Job "part1_Rsync (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:12 CST)" executed successfully
+INFO:apscheduler.executors.default:Job "part2_CromwellSubmit (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:12 CST)" executed successfully
+INFO:root:part3_TaskMonitoring --- Check Running Jobs1690a7ec-a374-4270-9733-4f3820c15d2f
+INFO:pika.adapters.utils.connection_workflow:Pika version 1.3.1 connecting to ('192.168.77.45', 5672)
+INFO:pika.adapters.utils.io_services_utils:Socket connected: <socket.socket fd=10, family=2, type=1, proto=6, laddr=('192.168.77.45', 48274), raddr=('192.168.77.45', 5672)>
+INFO:pika.adapters.utils.connection_workflow:Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fb5d95991d0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fb5d95991d0> params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>).
+INFO:pika.adapters.utils.connection_workflow:AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fb5d95991d0> params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>
+INFO:pika.adapters.utils.connection_workflow:AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fb5d95991d0> params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>
+INFO:pika.adapters.blocking_connection:Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fb5d95991d0> params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>
+INFO:pika.adapters.blocking_connection:Created channel=1
+INFO:pika.adapters.blocking_connection:Closing connection (200): Normal shutdown
+INFO:pika.channel:Closing channel (200): 'Normal shutdown' on <Channel number=1 OPEN conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fb5d95991d0> params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>>
+INFO:pika.channel:Received <Channel.CloseOk> on <Channel number=1 CLOSING conn=<SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7fb5d95991d0> params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>>
+INFO:pika.connection:Closing connection (200): 'Normal shutdown'
+INFO:pika.adapters.utils.io_services_utils:Aborting transport connection: state=1; <socket.socket fd=10, family=2, type=1, proto=6, laddr=('192.168.77.45', 48274), raddr=('192.168.77.45', 5672)>
+INFO:pika.adapters.utils.io_services_utils:_AsyncTransportBase._initate_abort(): Initiating abrupt asynchronous transport shutdown: state=1; error=None; <socket.socket fd=10, family=2, type=1, proto=6, laddr=('192.168.77.45', 48274), raddr=('192.168.77.45', 5672)>
+INFO:pika.adapters.utils.io_services_utils:Deactivating transport: state=1; <socket.socket fd=10, family=2, type=1, proto=6, laddr=('192.168.77.45', 48274), raddr=('192.168.77.45', 5672)>
+INFO:pika.connection:AMQP stack terminated, failed to connect, or aborted: opened=True, error-arg=None; pending-error=ConnectionClosedByClient: (200) 'Normal shutdown'
+INFO:pika.connection:Stack terminated due to ConnectionClosedByClient: (200) 'Normal shutdown'
+INFO:pika.adapters.utils.io_services_utils:Closing transport socket and unlinking: state=3; <socket.socket fd=10, family=2, type=1, proto=6, laddr=('192.168.77.45', 48274), raddr=('192.168.77.45', 5672)>
+INFO:pika.adapters.blocking_connection:User-initiated close: result=BlockingConnection__OnClosedArgs(connection=<SelectConnection CLOSED transport=None params=<ConnectionParameters host=192.168.77.45 port=5672 virtual_host=/ ssl=False>>, error=ConnectionClosedByClient: (200) 'Normal shutdown')
+INFO:apscheduler.executors.default:Job "part3_TaskMonitoring (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:12 CST)" executed successfully
+INFO:apscheduler.executors.default:Running job "part1_Rsync (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:22 CST)" (scheduled at 2023-07-12 15:09:12.637931+08:00)
+INFO:apscheduler.executors.default:Running job "part2_CromwellSubmit (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:22 CST)" (scheduled at 2023-07-12 15:09:12.638146+08:00)
+INFO:apscheduler.executors.default:Running job "part3_TaskMonitoring (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:22 CST)" (scheduled at 2023-07-12 15:09:12.638323+08:00)
+INFO:apscheduler.executors.default:Job "part1_Rsync (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:22 CST)" executed successfully
+INFO:apscheduler.executors.default:Job "part2_CromwellSubmit (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:22 CST)" executed successfully
+INFO:apscheduler.executors.default:Job "part3_TaskMonitoring (trigger: interval[0:00:10], next run at: 2023-07-12 15:09:22 CST)" executed successfully
+INFO:apscheduler.scheduler:Scheduler has been shut down

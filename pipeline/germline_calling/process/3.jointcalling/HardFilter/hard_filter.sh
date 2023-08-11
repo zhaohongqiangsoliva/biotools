@@ -61,6 +61,7 @@ gatk VariantFiltration  \
 
 bcftools filter -s GQ20 -e "FORMAT/FT[*]!=''" -O z 7.${output_name}.genotype_filter.SUPsite.snps.indels.genotype.vcf.gz \
   > 8.${output_name}.GQfilter.genotype_filter.SUPsite.snps.indels.genotype.vcf.gz
+bcftools index -t 8.${output_name}.GQfilter.genotype_filter.SUPsite.snps.indels.genotype.vcf.gz
 
 
 

@@ -10,7 +10,7 @@ ${reference}
 ${ped_file}
 &&
 #using gatk hard filter vcf
-sh ${SHELL_FOLDER}/Hardfilter/hard_filter.sh
+sh ${SHELL_FOLDER}/HardFilter/hard_filter.sh
 ${reference}
 ${outname}
 

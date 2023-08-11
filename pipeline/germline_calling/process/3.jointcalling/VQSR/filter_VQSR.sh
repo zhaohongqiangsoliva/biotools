@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# SNPs VQSR
+set -euo
 reference=$3
 fasta=${reference}/Homo_sapiens_assembly38.fasta
 raw_snps_vcf=$1
 gatk_reference=${reference}
 output=$2
-
-gatk VariantRecalibrator \
+# SNPs VQSR
+time gatk VariantRecalibrator \
    -R $fasta \
    -V $raw_snps_vcf \
    --resource:hapmap,known=false,training=true,truth=true,prior=15.0 ${gatk_reference}/hapmap_3.3.hg38.vcf.gz \
@@ -19,17 +19,10 @@ gatk VariantRecalibrator \
    --tranches-file ${output}_snps_recalibrate.tranches \
    --rscript-file ${output}_snps_recalibrate.plots.R
 
-gatk ApplyVQSR \
-   -R $fasta \
-   -V $raw_snps_vcf \
-   -O ${output}_snps_recalibrate.vcf \
-   --truth-sensitivity-filter-level 99.5 \
-   --tranches-file ${output}_snps_recalibrate.tranches \
-   --recal-file ${output}_snps_recalibrate.recal \
-   -mode SNP
+
 #
 # Indels VQSR
-gatk VariantRecalibrator \
+time gatk VariantRecalibrator \
    -R $fasta \
    -V $raw_snps_vcf \
      -tranche 100.0 -tranche 99.95 -tranche 99.9 \
@@ -43,9 +36,19 @@ gatk VariantRecalibrator \
    -O ${output}_indels_recalibrate.recal \
    --tranches-file ${output}_indels_recalibrate.tranches \
    --rscript-file ${output}_indels_recalibrate.plots.R
-gatk ApplyVQSR \
+# run ApplyVQSR on SNP then INDEL
+time gatk ApplyVQSR \
    -R $fasta \
    -V $raw_snps_vcf \
+   -O ${output}_snps_recalibrate.vcf \
+   --truth-sensitivity-filter-level 99.5 \
+   --tranches-file ${output}_snps_recalibrate.tranches \
+   --recal-file ${output}_snps_recalibrate.recal \
+   -mode SNP
+
+time gatk ApplyVQSR \
+   -R $fasta \
+   -V ${output}_snps_recalibrate.recal \
    -O ${output}_indels_recalibrate.vcf \
    --truth-sensitivity-filter-level 99.0 \
    --tranches-file ${output}_indels_recalibrate.tranches \

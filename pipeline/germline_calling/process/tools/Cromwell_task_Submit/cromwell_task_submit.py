@@ -73,7 +73,7 @@ sed -i "s#/Users/michael_scott/cromwell/#{self.outputs}/{sample_name}/cromwell/{
 """
         cmd_partition= f"""\n sed -i "s#partitions#{p}#g" {sample_path}/option_{option_name}.json"""
         cmd = cmd + cmd_partition
-        print(cmd)
+        #print(cmd)
         return cmd
 
     def readgroup(self,fastq1,fastq2,lane,sample_name,sample_path):
@@ -131,6 +131,25 @@ EOF
         return cmd
 
 
+
+    def update_config(self,config, config_updates):
+            for key, value in config_updates.items():
+                if key in config:
+                    if isinstance(value, dict) and isinstance(config[key], dict):
+                        self.update_config(config[key], value)  # 递归处理嵌套的字典
+                    else:
+                        config[key] = value
+
+    def update_config_files(self,config, config_updates,out_config):
+            # 遍历配置文件目录
+
+                    with open(config, 'r') as f:
+                        config_data = json.load(f)
+
+                    # 更新配置项
+                    self.update_config(config_data, config_updates)
+                    with open(out_config, 'w') as f:
+                        json.dump(config_data, f, indent=4)
 
 
 
@@ -206,13 +225,26 @@ EOF
             sample_name = samplelist["sample"]
             ubamdir = os.path.join(self.outputs,sample_name,"cromwell/fq2ubam/outputs")
             ubamlist = glob.glob(f"{ubamdir}/*unmapped.bam")
-            input_json_dict = json.load(open(WES_pipe["wes_input_json"]))
-            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["sample_name"] = sample_name
-            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["base_file_name"]=sample_name
-            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["final_gvcf_base_name"]= sample_name
-            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["flowcell_unmapped_bams"] = ubamlist
-            input_json_dict["ExomeGermlineSingleSample.references"]["calling_interval_list"] =bed
-            json.dump(input_json_dict,open(f"{self.outputs}/{sample_name}/{sample_name}.json","w"),indent=4,sort_keys=True)
+            # input_json_dict = json.load(open(WES_pipe["wes_input_json"]))
+            # input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["sample_name"] = sample_name
+            # input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["base_file_name"]=sample_name
+            # input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["final_gvcf_base_name"]= sample_name
+            # input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["flowcell_unmapped_bams"] = ubamlist
+            # input_json_dict["ExomeGermlineSingleSample.references"]["calling_interval_list"] =bed
+            # json.dump(input_json_dict,open(f"{self.outputs}/{sample_name}/{sample_name}.json","w"),indent=4,sort_keys=True)
+            config_updates_wes = {
+                "ExomeGermlineSingleSample.sample_and_unmapped_bams": {
+                    'sample_name': sample_name,
+                    'base_file_name': sample_name,
+                    "final_gvcf_base_name":sample_name,
+                    "flowcell_unmapped_bams":ubamlist
+                },
+                "ExomeGermlineSingleSample.references":{
+                    "calling_interval_list":bed
+                }
+            }
+
+            self.update_config_files(WGS_pipe["wes_input_json"],config_updates_wes,f"{self.outputs}/{sample_name}/{sample_name}.json")
             # TODO
             # update bed file and interval list
             option_name = "WES"
@@ -245,18 +277,27 @@ EOF
 
         cmd = []
         for samplelist in rander:
+
+            #### global part#####
             patient = samplelist["patient"]
             lane = samplelist["lane"]
             sample_name = samplelist["sample"]
             ubamdir = os.path.join(self.outputs,sample_name,"cromwell/fq2ubam/outputs")
             ubamlist = glob.glob(f"{ubamdir}/*unmapped.bam")
-            input_json_dict = json.load(open(WES_pipe["wes_input_json"]))
-            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["sample_name"] = sample_name
-            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["base_file_name"]=sample_name
-            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["final_gvcf_base_name"]= sample_name
-            input_json_dict["ExomeGermlineSingleSample.sample_and_unmapped_bams"]["flowcell_unmapped_bams"] = ubamlist
-            #input_json_dict["ExomeGermlineSingleSample.references"]["calling_interval_list"] =bed
-            json.dump(input_json_dict,open(f"{self.outputs}/{sample_name}/{sample_name}.json","w"),indent=4,sort_keys=True)
+
+
+            ################################修改input 参数####################################
+
+            config_updates = {
+                "WholeGenomeGermlineSingleSample.sample_and_unmapped_bams": {
+                    'sample_name': sample_name,
+                    'base_file_name': sample_name,
+                    "final_gvcf_base_name":sample_name,
+                    "flowcell_unmapped_bams":ubamlist
+                }}
+
+            self.update_config_files(WGS_pipe["wgs_input_json"],config_updates,f"{self.outputs}/{sample_name}/{sample_name}.json")
+
             # TODO
             # update bed file and interval list
             ####SETTING####
@@ -268,10 +309,10 @@ EOF
 
             cmd_SUB = self.submit(
                 submit_tools= global_options["cromwell_tools"],
-                wdl=WES_pipe["wdl"],
+                wdl=WGS_pipe["wdl"],
                 input_json=f"{self.outputs}/{sample_name}/{sample_name}.json",
                 options=options,
-                zip_file=WES_pipe["zip"],
+                zip_file=WGS_pipe["zip"],
                 sample_log=sample_log
             )
             make_step(cmd_SUB, f"{self.outputs}/{sample_name}/4.sb_{option_name}.sh")
@@ -366,6 +407,7 @@ if __name__ == '__main__':
 
     with open(script_dir +"/"+ args.config) as j:
         config_j = json.load(j)
+
         # bedtointerval = config_j['bedtointerval']
         # global_options = config_j["global"]
         # fastq2ubam = config_j["fastq2ubam"]
@@ -373,8 +415,8 @@ if __name__ == '__main__':
         # single_pipe = config_j["single_pipe"]
         for k,v in config_j.items():
             globals()[k] = v
-            print(k,v)
-
+            # print(k,v)
+    # print(config_j)
     pipe = pipeline(args.output,args.partition)
     if "fastp" in args.pipe:
         pipe.fastp_clean(args.input)

@@ -17,4 +17,8 @@ newpy.sh
  -x add 解压缩工具和工具箱的bin目录到到bashrc 
 
 
+### test ing 
 
+
+
+test！！！！！！

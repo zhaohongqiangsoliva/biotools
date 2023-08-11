@@ -50,6 +50,22 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="mycomputer_master_cromwell">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="mycompyter_pmaster">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/../cromwell" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="wuzh02.hpccube.com">
         <serverdata>
           <mappings>
