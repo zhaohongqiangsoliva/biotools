@@ -15,8 +15,8 @@ fi
 (parallel -j 1 -q wecho "
    sh bin/PCAKIN_1KG/mergeBedPlink.sh
         result/merge/merged.chr{}
-        rawdata/bed_${prefix_1}/${prefix_1}_chr{}
-        rawdata/bed_shanghai_final_passFilter/${prefix_2}_{}
+        ${prefix_1}{}
+        ${prefix_2}{}
         {}
     | bash
 " :::: chr.sh)|parallel -j 22

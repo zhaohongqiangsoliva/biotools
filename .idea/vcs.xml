@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugin/damai_tickets" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/plugin/docopts" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/tmp/xsv" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/tools/rust_tools/wc-rs" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/web/imputation_server/DjangoAdmin_Fastapi_AntdVue" vcs="Git" />

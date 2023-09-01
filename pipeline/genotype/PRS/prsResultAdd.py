@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     sscroe = glob.glob("./*.sscore")
     df = pd.read_table(sscroe[0])
-    df["#IID"] = df["#IID"].str.replace("0_", "")
+    df["#IID"] = df["#IID"].str.replace("_.*", "")
     sum_df = pd.DataFrame({
         "#IID": df["#IID"],
         "effect_weight_SUM": 0

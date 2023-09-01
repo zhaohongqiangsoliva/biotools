@@ -1,0 +1,3 @@
+cargo:rerun-if-changed=build/main.rs
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/disk/tools/syncthing/ucloud/biotools/tools/bioinfo/matchREF/matchRef/target/release/build/typenum-d1302ff06e1377ca/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/disk/tools/syncthing/ucloud/biotools/tools/bioinfo/matchREF/matchRef/target/release/build/typenum-d1302ff06e1377ca/out/op.rs

@@ -30,32 +30,37 @@ if __name__ == '__main__':
     args = docopt(__doc__, version='1.0')
 
     refSeq = args['-r']
-    pF = args['-f'] #position file.
+    pF = args['-f']  # position file.
 
     # print(args)
     # sys.exit(-1)
 
     from pyfaidx import Fasta
-    #genes=Fasta(refSeq)
-    genes=Fasta(refSeq,rebuild=False)
+    # genes=Fasta(refSeq)
+    genes = Fasta(refSeq, rebuild=False)
 
-    with open(pF,'r') as posFile:
+    with open(pF, 'r') as posFile:
         for line in posFile:
             line = line.strip()
             if line:
                 ss = line.split()
-                pos = int(ss[1])
+                pos_start = int(ss[1])
+                #pos_end = pos_start-1 + len(ss[2])
+
                 try:
-                    aa = genes[ss[0]][pos-1: pos]
+                    # add pos_end is match all of REF allele
+                    aa = genes[ss[0]][pos_start-1: pos_start]
                 except ValueError:
-                    sys.stderr.write('WARNNING: In contig[%s], can not find pos: %s. SKIP: %s\n'%(ss[0], ss[1], line))
+                    sys.stderr.write('WARNNING: In contig[%s], can not find pos: %s. SKIP: %s\n' % (
+                        ss[0], ss[1], line))
                     continue
                 except KeyError:
-                    sys.stderr.write('WARNNING: Can not find contig: %s. SKIP: %s\n'%(ss[0], line))
+                    sys.stderr.write(
+                        'WARNNING: Can not find contig: %s. SKIP: %s\n' % (ss[0], line))
                     continue
 
                 ss.append(str(aa))
-                sys.stdout.write('%s\n'%('\t'.join(ss)))
+                sys.stdout.write('%s\n' % ('\t'.join(ss)))
 
 sys.stdout.flush()
 sys.stdout.close()
